@@ -3,6 +3,7 @@ using System;
 using ITHelpdesk.Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ITHelpdesk.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    partial class ApplicationDBContextModelSnapshot : ModelSnapshot
+    [Migration("20250321100827_seed-data-sample")]
+    partial class seeddatasample
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -37,6 +40,7 @@ namespace ITHelpdesk.Infrastructure.Migrations
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Email")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("GithubUsername")
@@ -75,12 +79,12 @@ namespace ITHelpdesk.Infrastructure.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedDate = new DateTime(2025, 3, 22, 16, 54, 40, 471, DateTimeKind.Utc).AddTicks(5839),
-                            DateOfBirth = new DateTime(2025, 3, 22, 16, 54, 40, 471, DateTimeKind.Utc).AddTicks(5834),
+                            CreatedDate = new DateTime(2025, 3, 21, 10, 8, 27, 196, DateTimeKind.Utc).AddTicks(118),
+                            DateOfBirth = new DateTime(2025, 3, 21, 10, 8, 27, 196, DateTimeKind.Utc).AddTicks(112),
                             Email = "",
                             GithubUsername = "johndoe",
                             IsActive = true,
-                            ModifiedDate = new DateTime(2025, 3, 22, 16, 54, 40, 471, DateTimeKind.Utc).AddTicks(5839),
+                            ModifiedDate = new DateTime(2025, 3, 21, 10, 8, 27, 196, DateTimeKind.Utc).AddTicks(119),
                             Name = "Nguyen Tuan Ninh",
                             Password = "password",
                             PhoneNumber = "1234567890",
@@ -90,12 +94,12 @@ namespace ITHelpdesk.Infrastructure.Migrations
                         new
                         {
                             Id = 2,
-                            CreatedDate = new DateTime(2025, 3, 22, 16, 54, 40, 471, DateTimeKind.Utc).AddTicks(5845),
-                            DateOfBirth = new DateTime(2025, 3, 22, 16, 54, 40, 471, DateTimeKind.Utc).AddTicks(5844),
+                            CreatedDate = new DateTime(2025, 3, 21, 10, 8, 27, 196, DateTimeKind.Utc).AddTicks(126),
+                            DateOfBirth = new DateTime(2025, 3, 21, 10, 8, 27, 196, DateTimeKind.Utc).AddTicks(124),
                             Email = "",
                             GithubUsername = "johndoe",
                             IsActive = true,
-                            ModifiedDate = new DateTime(2025, 3, 22, 16, 54, 40, 471, DateTimeKind.Utc).AddTicks(5846),
+                            ModifiedDate = new DateTime(2025, 3, 21, 10, 8, 27, 196, DateTimeKind.Utc).AddTicks(126),
                             Name = "Nguyen Duy Phuc",
                             Password = "password",
                             PhoneNumber = "1234567890",
@@ -105,12 +109,12 @@ namespace ITHelpdesk.Infrastructure.Migrations
                         new
                         {
                             Id = 3,
-                            CreatedDate = new DateTime(2025, 3, 22, 16, 54, 40, 471, DateTimeKind.Utc).AddTicks(5851),
-                            DateOfBirth = new DateTime(2025, 3, 22, 16, 54, 40, 471, DateTimeKind.Utc).AddTicks(5850),
+                            CreatedDate = new DateTime(2025, 3, 21, 10, 8, 27, 196, DateTimeKind.Utc).AddTicks(132),
+                            DateOfBirth = new DateTime(2025, 3, 21, 10, 8, 27, 196, DateTimeKind.Utc).AddTicks(131),
                             Email = "",
                             GithubUsername = "johndoe",
                             IsActive = true,
-                            ModifiedDate = new DateTime(2025, 3, 22, 16, 54, 40, 471, DateTimeKind.Utc).AddTicks(5852),
+                            ModifiedDate = new DateTime(2025, 3, 21, 10, 8, 27, 196, DateTimeKind.Utc).AddTicks(133),
                             Name = "Nguyen Dinh Manh",
                             Password = "password",
                             PhoneNumber = "1234567890",

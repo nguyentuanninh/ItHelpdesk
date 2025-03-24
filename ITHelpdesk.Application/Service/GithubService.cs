@@ -13,8 +13,8 @@ namespace ITHelpdesk.Application.Service
     public class GithubService : IGithubService
     {
         private readonly IHttpClientFactory _httpClientFactory;
-        private readonly string _personalAccessToken; 
-        private readonly string _adminGitHubUser;     
+        private readonly string _personalAccessToken;
+        private readonly string _adminGitHubUser;
 
         public GithubService(IHttpClientFactory httpClientFactory, IConfiguration config)
         {
@@ -24,7 +24,7 @@ namespace ITHelpdesk.Application.Service
         }
 
 
-        public async Task<List<string>> SearchRepositoriesByNameAsync(string? searchText)
+        public async Task<List<RepoInfo>> SearchRepositoriesByNameAsync(string? searchText)
         {
             var client = _httpClientFactory.CreateClient("GitHubClient");
             client.DefaultRequestHeaders.Authorization =
@@ -32,7 +32,7 @@ namespace ITHelpdesk.Application.Service
 
 
             var response = await client.GetAsync("user/repos?per_page=100");
-            if (!response.IsSuccessStatusCode) return new List<string>();
+            if (!response.IsSuccessStatusCode) return new List<RepoInfo>();
 
             var json = await response.Content.ReadAsStringAsync();
 
@@ -41,17 +41,17 @@ namespace ITHelpdesk.Application.Service
                 PropertyNameCaseInsensitive = true
             }) ?? new List<RepoInfo>();
 
-            // Fillter repo by searchText 
-            var matchedRepoNames = new List<string>();
+            // Fillter repo by searchText
+            var matchedRepos = new List<RepoInfo>();
             foreach (var repo in repoList)
             {
                 if (searchText== null || repo.Name != null && repo.Name.ToLower().Contains(searchText.ToLower()))
                 {
-                    matchedRepoNames.Add(repo.Name);
+                    matchedRepos.Add(repo);
                 }
             }
 
-            return matchedRepoNames;
+            return matchedRepos;
         }
 
 

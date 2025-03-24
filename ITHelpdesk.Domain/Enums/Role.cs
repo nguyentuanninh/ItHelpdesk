@@ -8,8 +8,6 @@ namespace ITHelpdesk.Domain.Enums
 {
     public enum Role
     {
-        Admin,
-        Manager,
-        Employee
+        Admin, Operator, User
     }
 }
